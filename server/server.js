@@ -1,30 +1,19 @@
-const express = require("express");
-const cookieParser = require("cookie-parser");
-const cors = require("cors");
-// require("dotenv").config();
-
-
+const express = require('express');
+const connectDB = require('./config/db');
+const employeeRoutes = require('./routes/employeeRoutes');
+const loanRoutes = require('./routes/loanRoutes');
+const managerRoutes = require('./routes/managerRoutes');
 
 const app = express();
-const connectDb = require("./config/db");
-app.use(cookieParser());
-
-const port = process.env.PORT || 3030;
-
-const server = app.listen(port, () => {
-  console.log(`The server is running on port ${port}`);
-});
-
-connectDb();
-
-app.use(
-  cors({
-    // origin: "",
-  })
-);
+connectDB();
 
 app.use(express.json());
 
-app.use("/employees", require("./routes/employeeRoutes"));
-app.use("/managers", require("./routes/managerRoutes"));
-app.use("/users", require("./routes/userRoutes"));
+app.use('/api/employees', employeeRoutes);
+app.use('/api/loans', loanRoutes);
+app.use('/api/managers', managerRoutes);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

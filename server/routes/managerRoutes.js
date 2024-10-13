@@ -1,16 +1,9 @@
-const express = require("express");
+const express = require('express');
+const { createManager } = require('../controllers/managerController');
+
 const router = express.Router();
-const {
-  
-} = require("../controllers/managerController");
 
-
-router.route("/").get();
-
-router.route("/").post();
-
-router.route("/").put();
-
-router.route("/").delete();
+// Route to create a new manager
+router.post('/', createManager);
 
 module.exports = router;

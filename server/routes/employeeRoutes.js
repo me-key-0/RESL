@@ -1,16 +1,12 @@
-const express = require("express");
+const express = require('express');
+const { createEmployee, getEmployees } = require('../controllers/employeeController');
+
 const router = express.Router();
-const {
-  
-} = require("../controllers/employeeController");
 
+// Route to create a new employee
+router.post('/', createEmployee);
 
-router.route("/").get();
-
-router.route("/").post();
-
-router.route("/").put();
-
-router.route("/").delete();
+// Route to get all employees
+router.get('/', getEmployees);
 
 module.exports = router;
