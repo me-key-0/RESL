@@ -34,7 +34,7 @@ const EmployeeSchema = new mongoose.Schema({
   },
   employmentHistory: [
     {
-      employer: {
+      branch: {
         type: String,
       },
       position: {
